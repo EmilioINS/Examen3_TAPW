@@ -1,0 +1,230 @@
+/* ─── Root ─────────────────────────────────────────────────────────────── */
+.dash-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f1f4f9;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ─── Navbar ─────────────────────────────────────────────────────────────── */
+.dash-navbar {
+  height: 60px;
+  background: #0f1521;
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 32px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.dash-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.dash-navbar__logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.dash-navbar__title {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Center nav links */
+.dash-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.dash-navlink {
+  padding: 6px 14px;
+  border-radius: 8px;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.dash-navlink:hover {
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+}
+
+.dash-navlink--active {
+  background: rgba(0,63,135,0.55);
+  color: #fff;
+}
+
+/* Logout button — right side */
+.dash-navbar__logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.65);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.dash-navbar__logout:hover {
+  border-color: #f87171;
+  color: #f87171;
+  background: rgba(248,113,113,0.08);
+}
+
+/* ─── Main ───────────────────────────────────────────────────────────────── */
+.dash-main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+/* ─── Welcome block ─────────────────────────────────────────────────────── */
+.dash-welcome {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.dash-welcome__icon {
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.dash-welcome__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f1521;
+  margin: 0;
+}
+
+.dash-welcome__subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  max-width: 460px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Token preview box */
+.dash-token-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 10px 18px;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.dash-token-box__label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.dash-token-box__value {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12.5px;
+  color: #003f87;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── Quick-access cards ────────────────────────────────────────────────── */
+.dash-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.dash-card {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  text-align: center;
+}
+
+.dash-card:hover {
+  border-color: #003f87;
+  box-shadow: 0 4px 20px rgba(0,63,135,0.1);
+  transform: translateY(-2px);
+}
+
+.dash-card__icon {
+  font-size: 28px;
+  margin-bottom: 2px;
+}
+
+.dash-card__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f1521;
+}
+
+.dash-card__desc {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .dash-navbar__links {
+    display: none;
+  }
+
+  .dash-navbar {
+    padding: 0 16px;
+  }
+
+  .dash-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-main {
+    padding: 32px 16px;
+  }
+}

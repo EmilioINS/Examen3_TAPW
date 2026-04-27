@@ -1,0 +1,277 @@
+/* ─── Root ─────────────────────────────────────────────────────────────── */
+.login-root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ─── Layered background ────────────────────────────────────────────────── */
+.login-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.login-bg__color {
+  position: absolute;
+  inset: 0;
+  background: #0a0e1a;
+}
+
+/* ─── Slideshow ─────────────────────────────────────────────────────────── */
+.bg-slideshow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  /* opacity is set via inline style; transition animates it smoothly */
+  transition: opacity 2s ease-in-out;
+  will-change: opacity;
+}
+
+/* ─── Scene wrapper (card + lince) ──────────────────────────────────────── */
+.login-scene {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  transform: translateX(-48px);
+}
+
+/* ─── Lince mascot ──────────────────────────────────────────────────────── */
+.login-lince {
+  position: relative;
+  /* Slightly overlaps the card's left edge and protrudes below */
+  height: 340px;
+  width: auto;
+  object-fit: contain;
+  margin-right: -28px;
+  align-self: flex-end;
+  margin-bottom: -20px;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
+  z-index: 3;
+  flex-shrink: 0;
+}
+
+/* ─── Card ──────────────────────────────────────────────────────────────── */
+.login-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(400px, 92vw);
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 20px;
+  padding: 28px 32px 24px;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.07);
+}
+
+/* ─── Logo ───────────────────────────────────────────────────────────────── */
+.login-logos {
+  margin-bottom: 14px;
+}
+
+.login-logo {
+  height: 72px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ─── Title ──────────────────────────────────────────────────────────────── */
+.login-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1d2e;
+  text-align: center;
+  line-height: 1.3;
+  margin: 0 0 18px;
+  letter-spacing: -0.2px;
+}
+
+.login-title span {
+  color: #003f87;
+}
+
+/* ─── Form ───────────────────────────────────────────────────────────────── */
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Floating-label field */
+.login-field {
+  position: relative;
+}
+
+.login-field input {
+  width: 100%;
+  padding: 18px 14px 7px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #1a1d2e;
+  background: #f8f9fc;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-field input:focus {
+  border-color: #003f87;
+  box-shadow: 0 0 0 3px rgba(0, 63, 135, 0.12);
+  background: #fff;
+}
+
+.login-field input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-field label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  color: #9ca3af;
+  pointer-events: none;
+  transition: top 0.18s ease, font-size 0.18s ease, color 0.18s ease;
+}
+
+.login-field input:focus + label,
+.login-field input:not(:placeholder-shown) + label {
+  top: 8px;
+  transform: none;
+  font-size: 10px;
+  color: #003f87;
+}
+
+/* ─── Session-expired banner ────────────────────────────────────────────── */
+.login-expired {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: #92400e;
+  line-height: 1.4;
+}
+
+.login-expired svg {
+  flex-shrink: 0;
+}
+
+/* ─── Error message ─────────────────────────────────────────────────────── */
+.login-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 9px 12px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: #dc2626;
+  line-height: 1.4;
+}
+
+.login-error svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─── Submit button ─────────────────────────────────────────────────────── */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: #1a1d2e;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 2px;
+}
+
+.login-btn:hover:not(:disabled) {
+  background: #003f87;
+}
+
+.login-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.login-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Footer ────────────────────────────────────────────────────────────── */
+.login-footer {
+  margin-top: 14px;
+  font-size: 11.5px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.login-footer a {
+  color: #003f87;
+  text-decoration: none;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .login-scene {
+    transform: none;
+  }
+
+  .login-lince {
+    display: none;
+  }
+
+  .login-card {
+    padding: 24px 22px 20px;
+    border-radius: 16px;
+  }
+}
