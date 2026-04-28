@@ -206,27 +206,27 @@ Contraseña: password
 ## Capturas de pantalla
 
 ### Login
-![Login](src/assets/screenshots/scr_1.png)
+![Login](src/assets/screenshots/src_1.png)
 > Pantalla de inicio de sesión con fondo de constelaciones animado, slideshow de imágenes del campus y formulario con el lince mascota.
 
 ### Dashboard
-![Dashboard](src/assets/screenshots/scr_2.png)
+![Dashboard](src/assets/screenshots/src_2.png)
 > Panel principal con información del estudiante, tarjetas de estadísticas, gráficas (distribución de materias, comparativa de promedios, avance de carrera) y accesos rápidos.
 
 ### Calificaciones
-![Calificaciones](src/assets/screenshots/scr_3.png)
+![Calificaciones](src/assets/screenshots/src_3.png)
 > Tabla con las calificaciones del periodo actual. Cada parcial muestra un badge de color según el rendimiento (verde ≥80, lima ≥70, ámbar ≥60, rojo <60).
 
 ### Kardex
-![Kardex](src/assets/screenshots/scr_4.png)
+![Kardex](src/assets/screenshots/src_4.png)
 > Historial académico completo agrupado por semestre. Muestra resumen de créditos y promedio por semestre.
 
 ### Horario
-![Horario](src/assets/screenshots/scr_5.png)
+![Horario](src/assets/screenshots/src_5.png)
 > Horario semanal del semestre actual. Cada día muestra el rango de horas y el aula asignada.
 
 ### Reseñas
-![Resenas](src/assets/screenshots/scr_6.png)
+![Resenas](src/assets/screenshots/src_6.png)
 > Usando el backend propio como microservicio presenta informacion de reseñas a profesores, teniendo opcion de presentar una reseña (se debe tener autorización para hacerla pública).
 
 
