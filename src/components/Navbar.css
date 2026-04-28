@@ -1,0 +1,351 @@
+/* ─── Shell ──────────────────────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.navbar--transparent { background: transparent; }
+.navbar--solid {
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.09);
+}
+
+/* ─── Inner layout ───────────────────────────────────────────────────────── */
+.navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 62px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ─── Logo ───────────────────────────────────────────────────────────────── */
+.navbar__logo {
+  width: 48px;
+  height: auto;
+  object-fit: contain;
+  padding: 6px;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+/* ─── Desktop nav links ──────────────────────────────────────────────────── */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+}
+
+.navbar__link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.35s ease;
+  white-space: nowrap;
+}
+
+.navbar__link-icon { font-size: 13px; opacity: 0.85; }
+
+.navbar--transparent .navbar__link        { color: rgba(255,255,255,0.8); }
+.navbar--transparent .navbar__link:hover  { background: rgba(255,255,255,0.12); color: #fff; }
+.navbar--transparent .navbar__link--active{ background: rgba(255,255,255,0.18); color: #fff; }
+
+.navbar--solid .navbar__link             { color: #4b5563; }
+.navbar--solid .navbar__link:hover       { background: #f3f4f6; color: #0f1521; }
+.navbar--solid .navbar__link--active     { background: rgba(0,63,135,0.08); color: #003f87; }
+
+/* ─── Mobile "Consulta" button ───────────────────────────────────────────── */
+.navbar__consulta-btn {
+  display: none;          /* hidden on desktop */
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: 9px;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.2s, color 0.35s ease;
+  flex-shrink: 0;
+}
+
+.navbar--transparent .navbar__consulta-btn       { color: rgba(255,255,255,0.85); }
+.navbar--transparent .navbar__consulta-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.navbar--solid .navbar__consulta-btn             { color: #374151; }
+.navbar--solid .navbar__consulta-btn:hover       { background: #f3f4f6; color: #0f1521; }
+
+/* ─── Profile dropdown area ──────────────────────────────────────────────── */
+.navbar__user {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.navbar__user-btn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 10px 5px 5px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.35s ease;
+}
+
+.navbar--transparent .navbar__user-btn              { border-color: rgba(255,255,255,0.3); }
+.navbar--transparent .navbar__user-btn:hover        { background: rgba(255,255,255,0.1); }
+.navbar--solid .navbar__user-btn                    { border-color: #e5e7eb; }
+.navbar--solid .navbar__user-btn:hover              { background: #f9fafb; }
+
+/* ─── Avatar ─────────────────────────────────────────────────────────────── */
+.navbar__avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  background: #003f87;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navbar__avatar--sm { width: 34px; height: 34px; font-size: 14px; font-weight: 700; color: #fff; }
+.navbar__avatar--md { width: 40px; height: 40px; font-size: 16px; font-weight: 700; color: #fff; }
+.navbar__avatar--lg { width: 60px; height: 60px; font-size: 24px; font-weight: 700; color: #fff; }
+
+.navbar__avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Username beside avatar */
+.navbar__username {
+  font-size: 13px;
+  font-weight: 600;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.35s ease;
+}
+
+.navbar--transparent .navbar__username { color: rgba(255,255,255,0.9); }
+.navbar--solid       .navbar__username { color: #0f1521; }
+
+/* Chevron */
+.navbar__chevron {
+  font-size: 11px;
+  transition: transform 0.2s, color 0.35s ease;
+}
+.navbar__chevron--open { transform: rotate(180deg); }
+.navbar--transparent .navbar__chevron { color: rgba(255,255,255,0.7); }
+.navbar--solid       .navbar__chevron { color: #9ca3af; }
+
+/* ─── Dropdown menu ──────────────────────────────────────────────────────── */
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 230px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+  overflow: hidden;
+  animation: dropIn 0.15s ease;
+  z-index: 200;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Full-name header inside dropdown */
+.navbar__dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.navbar__dropdown-userinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.navbar__dropdown-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f1521;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar__dropdown-email {
+  font-size: 11px;
+  color: #9ca3af;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 16px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.navbar__dropdown-item:hover                { background: #f9fafb; color: #0f1521; }
+.navbar__dropdown-item--danger              { color: #dc2626; }
+.navbar__dropdown-item--danger:hover        { background: #fef2f2; color: #b91c1c; }
+.navbar__dropdown-item + .navbar__dropdown-item { border-top: 1px solid #f3f4f6; }
+
+/* ─── Mobile full-height panel ───────────────────────────────────────────── */
+.mobile-nav {
+  position: fixed;
+  top: 62px;         /* flush below navbar */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  background: rgba(8, 12, 24, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px 20px;
+  overflow-y: auto;
+  animation: mobileNavIn 0.2s ease;
+}
+
+@keyframes mobileNavIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-nav__user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 20px;
+}
+
+.mobile-nav__fullname {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 3px;
+  line-height: 1.2;
+}
+
+.mobile-nav__email {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+}
+
+.mobile-nav__divider {
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin-bottom: 14px;
+}
+
+.mobile-nav__links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 15px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.65);
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.mobile-nav__link:hover,
+.mobile-nav__link--active {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.mobile-nav__link-icon {
+  width: 26px;
+  text-align: center;
+  font-size: 17px;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.mobile-nav__spacer { flex: 1; min-height: 24px; }
+
+.mobile-nav__logout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 16px;
+  border-radius: 12px;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.2);
+  color: #fca5a5;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  width: 100%;
+}
+
+.mobile-nav__logout:hover {
+  background: rgba(239,68,68,0.2);
+}
+
+/* ─── Responsive breakpoints ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Show the Consulta button */
+  .navbar__consulta-btn { display: flex; }
+
+  /* Hide desktop links */
+  .navbar__links { display: none; }
+
+  .navbar__inner { padding: 0 14px; gap: 4px; }
+
+  /* Always show username on mobile (it's visible in the pill next to avatar) */
+  .navbar__username { display: block; max-width: 90px; }
+}
+
+@media (max-width: 400px) {
+  .navbar__username { display: none; }
+}
