@@ -60,7 +60,7 @@ export default function Navbar() {
   }
 
   const photoSrc  = student?.foto ? `data:image/jpeg;base64,${student.foto}` : null
-  const firstName = student?.persona.split(' ').at(-1) ?? 'Usuario'
+  const firstName = student?.persona.split(' ').at(0) ?? 'Usuario'
   const fullName  = student?.persona ?? 'Usuario'
 
   const Avatar = ({ size = 'sm' }: { size?: 'sm' | 'md' | 'lg' }) => (

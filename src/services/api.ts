@@ -182,6 +182,46 @@ export function getKardex(token: string) {
   return request<KardexResponse>('/movil/estudiante/kardex', { headers: authHeaders(token) })
 }
 
+// ─── Horarios ─────────────────────────────────────────────────────────────────
+
+export interface HorarioItem {
+  id_grupo: number
+  letra_grupo: string
+  nombre_materia: string
+  clave_materia: string
+  clave_turno: string
+  nombre_plan: string
+  letra_nivel: string
+  lunes: string | null
+  lunes_clave_salon: string | null
+  martes: string | null
+  martes_clave_salon: string | null
+  miercoles: string | null
+  miercoles_clave_salon: string | null
+  jueves: string | null
+  jueves_clave_salon: string | null
+  viernes: string | null
+  viernes_clave_salon: string | null
+  sabado: string | null
+  sabado_clave_salon: string | null
+}
+
+export interface PeriodoHorario {
+  periodo: {
+    clave_periodo: string
+    anio: number
+    descripcion_periodo: string
+  }
+  horario: HorarioItem[]
+}
+
+export interface HorariosResponse {
+  code: number
+  message: string
+  flag: boolean
+  data: PeriodoHorario[]
+}
+
 export function getHorarios(token: string) {
-  return request('/movil/estudiante/horarios', { headers: authHeaders(token) })
+  return request<HorariosResponse>('/movil/estudiante/horarios', { headers: authHeaders(token) })
 }

@@ -208,8 +208,13 @@ function DashboardContent({ student }: { student: EstudianteData }) {
                   formatter={(v: unknown) => Number(v).toFixed(1)}
                   style={{ fill: 'rgba(255,255,255,0.85)', fontSize: 13, fontWeight: 600 }} />
               </Bar>
-              <Tooltip contentStyle={TOOLTIP_STYLE}
-                formatter={(v: unknown) => [Number(v).toFixed(2), 'Promedio']} />
+              <Tooltip
+                cursor={false}
+                contentStyle={TOOLTIP_STYLE}
+                itemStyle={{ color: '#fff', fontWeight: 700 }}
+                labelStyle={{ display: 'none' }}
+                formatter={(v: unknown) => [Number(v).toFixed(2)]}
+              />
             </BarChart>
           </ResponsiveContainer>
         </div>

@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Calificaciones from './pages/Calificaciones'
 import Kardex from './pages/Kardex'
+import Horario from './pages/Horario'
 import ProtectedRoute from './components/ProtectedRoute'
 
 // Redirects authenticated users to dashboard, others to login
@@ -42,6 +43,14 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <Kardex />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/horario"
+              element={
+                <ProtectedRoute>
+                  <Horario />
                 </ProtectedRoute>
               }
             />
