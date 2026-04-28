@@ -1,6 +1,4 @@
-// In dev, Vite proxies /api → https://sii.celaya.tecnm.mx (avoids CORS).
-// In production a server-level proxy or CORS headers are required.
-const BASE_URL = '/api'
+const BASE_URL = import.meta.env.VITE_API_URL || '/api'
 
 export class ApiError extends Error {
   status: number
@@ -11,15 +9,12 @@ export class ApiError extends Error {
   }
 }
 
-// ─── Global 401/403 interceptor ──────────────────────────────────────────────
-// Registered once by AuthContext. Fires at most once per session to avoid
-// triggering multiple redirects when concurrent requests all fail.
 let unauthorizedHandler: (() => void) | null = null
 let interceptorFired = false
 
 export function registerUnauthorizedHandler(handler: () => void): void {
   unauthorizedHandler = handler
-  interceptorFired = false  // reset so the new session can trigger once
+  interceptorFired = false  
 }
 
 export function resetInterceptor(): void {
@@ -55,8 +50,6 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 function authHeaders(token: string) {
   return { Authorization: `Bearer ${token}` }
 }
-
-// ─── API endpoints ────────────────────────────────────────────────────────────
 
 // Actual API response shape from POST /api/login
 export interface LoginResponse {

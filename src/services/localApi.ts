@@ -1,6 +1,5 @@
 
-
-const BASE_URL = '/api/v1'
+const BASE_URL = import.meta.env.VITE_REVIEWS_API_URL || '/api/v1'
 
 export class LocalApiError extends Error {
   status: number

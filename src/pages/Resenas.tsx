@@ -12,6 +12,7 @@ import {
   getSubjects,
   type Subject
 } from '../services/localApi'
+import Navbar from '../components/Navbar'
 import './Resenas.css'
 
 export default function Resenas() {
@@ -132,7 +133,9 @@ export default function Resenas() {
         <div className="resenas-bg__overlay" />
       </div>
 
-      <div className="resenas-content">
+      <Navbar />
+
+      <main className="resenas-content">
         <div className="resenas-header">
           <h1>Reseñas Académicas</h1>
           <p>Consulta o comparte tu experiencia con los profesores de la institución.</p>
@@ -299,7 +302,7 @@ export default function Resenas() {
             )}
           </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }
