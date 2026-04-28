@@ -84,12 +84,76 @@ export function extractToken(res: LoginResponse): string {
   return res.message.login.token
 }
 
+// ─── Estudiante ───────────────────────────────────────────────────────────────
+
+export interface EstudianteData {
+  numero_control: string
+  persona: string
+  email: string
+  semestre: number
+  num_mat_rep_no_acreditadas: string
+  creditos_acumulados: string
+  promedio_ponderado: string
+  promedio_aritmetico: string
+  materias_cursadas: string
+  materias_reprobadas: string
+  materias_aprobadas: string
+  creditos_complementarios: number
+  porcentaje_avance: number
+  num_materias_rep_primera: string | null
+  num_materias_rep_segunda: string | null
+  percentaje_avance_cursando: number
+  foto: string
+}
+
+export interface EstudianteResponse {
+  code: number
+  message: string
+  flag: boolean
+  data: EstudianteData
+}
+
 export function getEstudiante(token: string) {
-  return request('/movil/estudiante', { headers: authHeaders(token) })
+  return request<EstudianteResponse>('/movil/estudiante', { headers: authHeaders(token) })
+}
+
+// ─── Calificaciones ───────────────────────────────────────────────────────────
+
+export interface CalificacionItem {
+  id_calificacion: number
+  numero_calificacion: number
+  calificacion: string | null
+}
+
+export interface MateriaEntry {
+  materia: {
+    id_grupo: number
+    nombre_materia: string
+    clave_materia: string
+    letra_grupo: string
+  }
+  // Note: the API has a typo — "calificaiones" (missing 'c')
+  calificaiones: CalificacionItem[]
+}
+
+export interface PeriodoCalificaciones {
+  periodo: {
+    clave_periodo: string
+    anio: number
+    descripcion_periodo: string
+  }
+  materias: MateriaEntry[]
+}
+
+export interface CalificacionesResponse {
+  code: number
+  message: string
+  flag: boolean
+  data: PeriodoCalificaciones[]
 }
 
 export function getCalificaciones(token: string) {
-  return request('/movil/estudiante/calificaciones', { headers: authHeaders(token) })
+  return request<CalificacionesResponse>('/movil/estudiante/calificaciones', { headers: authHeaders(token) })
 }
 
 export function getKardex(token: string) {

@@ -1,0 +1,290 @@
+/* ─── Shared page shell (reused by all authenticated pages) ─────────────── */
+.page-root {
+  min-height: 100vh;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.page-bg__img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.42) saturate(0.8);
+}
+
+.page-bg__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(10, 14, 26, 0.35) 0%,
+    rgba(5, 8, 18, 0.55) 100%
+  );
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 28px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ─── Glass utility (local copy) ────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* ─── Page heading ───────────────────────────────────────────────────────── */
+.page-heading {
+  padding-top: 4px;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+/* ─── Error ──────────────────────────────────────────────────────────────── */
+.page-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 24px;
+  border-radius: 14px;
+  font-size: 14px;
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* ─── Loading skeleton ───────────────────────────────────────────────────── */
+.cal-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cal-skel-row {
+  border-radius: 14px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.07) 25%,
+    rgba(255,255,255,0.13) 50%,
+    rgba(255,255,255,0.07) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─── Empty state ────────────────────────────────────────────────────────── */
+.cal-empty {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 15px;
+  text-align: center;
+  padding: 48px 0;
+}
+
+/* ─── Periodo section ────────────────────────────────────────────────────── */
+.periodo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.periodo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.periodo-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.periodo-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.periodo-clave {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.04em;
+}
+
+.periodo-year {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ─── Table wrapper ──────────────────────────────────────────────────────── */
+.cal-table-wrap {
+  border-radius: 18px;
+  overflow-x: auto;
+}
+
+/* ─── Transparent borderless table ──────────────────────────────────────── */
+.cal-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  min-width: 640px;
+}
+
+/* Header */
+.cal-th {
+  padding: 14px 18px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+  white-space: nowrap;
+  background: transparent;
+}
+
+.cal-th--center { text-align: center; }
+.cal-th--name   { min-width: 220px; }
+
+/* Body cells */
+.cal-td {
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: transparent;
+  vertical-align: middle;
+}
+
+.cal-row:last-child .cal-td {
+  border-bottom: none;
+}
+
+/* Subtle row hover */
+.cal-row:hover .cal-td {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.cal-td--name  { min-width: 220px; }
+.cal-td--code  { white-space: nowrap; }
+.cal-td--grade,
+.cal-td--prom  { text-align: center; }
+
+/* Materia name */
+.mat-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+/* Group badge */
+.group-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ─── Grade badge ────────────────────────────────────────────────────────── */
+.grade-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.grade-badge--prom {
+  min-width: 52px;
+  font-size: 13.5px;
+}
+
+/* Grade levels */
+.grade-badge--empty {
+  color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.grade-badge--high {
+  background: rgba(34, 197, 94, 0.22);
+  color: #86efac;
+}
+
+.grade-badge--mid {
+  background: rgba(163, 230, 53, 0.2);
+  color: #bef264;
+}
+
+.grade-badge--low {
+  background: rgba(251, 191, 36, 0.22);
+  color: #fcd34d;
+}
+
+.grade-badge--fail {
+  background: rgba(239, 68, 68, 0.22);
+  color: #fca5a5;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .page-content {
+    padding: 82px 14px 48px;
+    gap: 20px;
+  }
+
+  .page-title { font-size: 24px; }
+  .periodo-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+  .cal-th,
+  .cal-td { padding: 12px 14px; }
+}
