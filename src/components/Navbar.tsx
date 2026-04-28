@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHouse, faBookOpen, faScroll, faCalendarDays,
   faChevronDown, faUser, faArrowRightFromBracket,
-  faBars, faXmark,
+  faBars, faXmark, faStar
 } from '@fortawesome/free-solid-svg-icons'
 import { useAuth } from '../contexts/AuthContext'
 import { useStudent } from '../contexts/StudentContext'
@@ -16,6 +16,7 @@ const NAV_LINKS = [
   { to: '/calificaciones', icon: faBookOpen,     label: 'Calificaciones' },
   { to: '/kardex',         icon: faScroll,       label: 'Kardex' },
   { to: '/horario',        icon: faCalendarDays, label: 'Horario' },
+  { to: '/resenas',        icon: faStar,         label: 'Reseñas' },
 ]
 
 export default function Navbar() {

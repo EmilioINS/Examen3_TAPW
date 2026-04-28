@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard'
 import Calificaciones from './pages/Calificaciones'
 import Kardex from './pages/Kardex'
 import Horario from './pages/Horario'
+import Resenas from './pages/Resenas'
 import ProtectedRoute from './components/ProtectedRoute'
 
 // Redirects authenticated users to dashboard, others to login
@@ -51,6 +52,14 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <Horario />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/resenas"
+              element={
+                <ProtectedRoute>
+                  <Resenas />
                 </ProtectedRoute>
               }
             />
