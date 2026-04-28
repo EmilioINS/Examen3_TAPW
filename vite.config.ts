@@ -6,11 +6,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api/v1': {
-        target: 'http://localhost:3000',
+        target: process.env.VITE_REVIEWS_API_URL,
         changeOrigin: true,
       },
       '/api': {
-        target: 'https://sii.celaya.tecnm.mx',
+        target: process.env.VITE_API_URL,
         changeOrigin: true,
         secure: true,
       },
