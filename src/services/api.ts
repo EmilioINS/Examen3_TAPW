@@ -156,8 +156,30 @@ export function getCalificaciones(token: string) {
   return request<CalificacionesResponse>('/movil/estudiante/calificaciones', { headers: authHeaders(token) })
 }
 
+// ─── Kardex ───────────────────────────────────────────────────────────────────
+
+export interface KardexItem {
+  nombre_materia: string
+  clave_materia: string
+  periodo: string
+  creditos: string
+  calificacion: string
+  descripcion: string
+  semestre: number
+}
+
+export interface KardexResponse {
+  code: number
+  message: string
+  flag: boolean
+  data: {
+    porcentaje_avance: number
+    kardex: KardexItem[]
+  }
+}
+
 export function getKardex(token: string) {
-  return request('/movil/estudiante/kardex', { headers: authHeaders(token) })
+  return request<KardexResponse>('/movil/estudiante/kardex', { headers: authHeaders(token) })
 }
 
 export function getHorarios(token: string) {

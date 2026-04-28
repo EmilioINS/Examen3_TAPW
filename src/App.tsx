@@ -5,6 +5,7 @@ import { useAuth } from './contexts/AuthContext'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Calificaciones from './pages/Calificaciones'
+import Kardex from './pages/Kardex'
 import ProtectedRoute from './components/ProtectedRoute'
 
 // Redirects authenticated users to dashboard, others to login
@@ -33,6 +34,14 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <Calificaciones />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/kardex"
+              element={
+                <ProtectedRoute>
+                  <Kardex />
                 </ProtectedRoute>
               }
             />
