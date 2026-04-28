@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import {
   faGraduationCap, faLayerGroup, faStar,
-  faBookOpen, faChartPie, faScroll, faCalendarDays,
+  faBookOpen, faScroll, faCalendarDays,
 } from '@fortawesome/free-solid-svg-icons'
 import ConstellationCanvas from '../components/ConstellationCanvas'
 import Navbar from '../components/Navbar'
